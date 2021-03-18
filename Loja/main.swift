@@ -21,6 +21,7 @@ class Usuario {
     }
 }
 var usuarios = [Usuario] ()
+
 class Produto {
     let codigo: String
     let nome: String
@@ -36,6 +37,9 @@ class Produto {
         self.data_publicacao = data_publicacao
     }
 }
+
+var produtos = [Produto] ()
+
 func CadastraUsuario() {
     var nome: String = ""
     var email: String = ""
