@@ -86,6 +86,9 @@ func MenuUsuario () {
 
     
 }
+
+var produtos = [Produto] ()
+
 func CadastraUsuario() {
     var nome: String = ""
     var email: String = ""
