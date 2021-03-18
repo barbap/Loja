@@ -102,7 +102,7 @@ func CadastraUsuario() {
     if let senhaRead: String = readLine(){senha = senhaRead}
     print("passou aqui")
     let NovoUsuario = Usuario(codigo: "1", nome: nome, email: email, senha: senha)
-    
+    //verificar erro aqui
     usuarios.append(NovoUsuario)
     MenuInicial()
 }
