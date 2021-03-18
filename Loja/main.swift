@@ -20,6 +20,7 @@ class Usuario {
         self.senha = senha
     }
 }
+var usuarios = [Usuario] ()
 class Produto {
     let codigo: String
     let nome: String
@@ -47,7 +48,8 @@ func CadastraUsuario() {
     if let senhaRead: String = readLine(){senha = senhaRead}
     let codigo: String = "1";
     var NovoUsuario = Usuario(codigo: codigo, nome: nome, email: email, senha: senha)
-    print(NovoUsuario.nome)
+    usuarios.append(NovoUsuario)
+    print(usuarios[0].nome)
     
 }
 func Login() {
@@ -61,7 +63,7 @@ if let resposta = readLine(){
     switch resposta {
     
     case "1":
-        
+        Login()
         break;
     case "2":
         CadastraUsuario();
