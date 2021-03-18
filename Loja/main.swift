@@ -102,7 +102,6 @@ func CadastraUsuario() {
     if let senhaRead: String = readLine(){senha = senhaRead}
     print("passou aqui")
     let NovoUsuario = Usuario(codigo: "1", nome: nome, email: email, senha: senha)
-    //verificar erro aqui
     usuarios.append(NovoUsuario)
     MenuInicial()
 }
@@ -119,12 +118,11 @@ func Login() {
         if  email == user.email && senha == user.senha{
             MenuUsuario()
             break;
-        } else {
-            print(usuarios[3].email + usuarios[3].senha)
-            print("Usuário Inválido")
-            Login()
         }
         
     }
+    print(usuarios[3].email + usuarios[3].senha)
+    print("Usuário Inválido")
+    Login()
 }
  
