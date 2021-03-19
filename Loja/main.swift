@@ -31,13 +31,13 @@ usuarios.append(usuario3)
 
 
 class Produto {
-    let codigo: String
+    let codigo: Int
     let nome: String
     let descricao: String
     let valor: Double
     let data_publicacao: Date
     
-    init(codigo: String,nome: String,descricao: String,valor: Double,data_publicacao: Date) {
+    init(codigo: Int,nome: String,descricao: String,valor: Double,data_publicacao: Date) {
         self.codigo = codigo
         self.nome = nome
         self.descricao = descricao
@@ -45,6 +45,10 @@ class Produto {
         self.data_publicacao = data_publicacao
     }
 }
+
+var produtos = [Produto]()
+
+
 func MenuInicial (){
     print("Lojas Brasileiras")
     print("1 - LogIn")
@@ -77,17 +81,41 @@ func MenuUsuario () {
             break;
         case "2":
             //chamada da funcao Cadastra de Produtos para Venda
+            CadastraProduto()
             break;
         default:
             break;
         }
     }
-       
-
     
 }
 
-var produtos = [Produto] ()
+func CadastraProduto(){
+    
+    let codigo: Int =  Int.random(in: 0..<100)
+    var nome: String = ""
+    var descricao: String = ""
+    var valor: Double = 0.0
+    let now = Date()
+
+    print("----- Cadastro de Produtos -----")
+    print("Nome ")
+    if let nomeRead: String = readLine(){nome = nomeRead}
+    print("Descricao")
+    if let descricaoRead: String = readLine(){descricao = descricaoRead}
+    print("Valor")
+    if let valorRead = readLine(){
+        if let doubleValor = Double(valorRead){
+        valor = doubleValor
+        }
+    }
+    
+    let NovoProduto = Produto(codigo: codigo, nome: nome, descricao: descricao, valor:valor, data_publicacao: now)
+    
+    produtos.append(NovoProduto)
+    print("Produto cadastrado com sucesso")
+    MenuUsuario()
+}
 
 func CadastraUsuario() {
     var nome: String = ""
@@ -105,6 +133,7 @@ func CadastraUsuario() {
     usuarios.append(NovoUsuario)
     MenuInicial()
 }
+
 func Login() {
     var email: String = ""
     var senha: String = ""
@@ -121,7 +150,7 @@ func Login() {
         }
         
     }
-    print(usuarios[3].email + usuarios[3].senha)
+    //print(usuarios[3].email + usuarios[3].senha)
     print("Usuário Inválido")
     Login()
 }
