@@ -45,9 +45,21 @@ class Produto {
         self.data_publicacao = data_publicacao
     }
 }
+var momento = Date()
+
+let p1 = Produto(codigo: 1, nome: "Cebola", descricao: "Comida", valor: 2.20, data_publicacao: momento)
+let p2 = Produto(codigo: 2, nome: "Alho", descricao: "Comida", valor: 1.10, data_publicacao: momento)
+let p3 = Produto(codigo: 3, nome: "Celular", descricao: "Eletronico", valor: 2100.20, data_publicacao: momento)
+let p4 = Produto(codigo: 4, nome: "Notebook", descricao: "Eletronico", valor: 8005.20, data_publicacao: momento)
+let p5 = Produto(codigo: 5, nome: "iPhone", descricao: "Telefone", valor: 7000.50, data_publicacao: momento)
 
 var produtos = [Produto]()
 
+produtos.append(p1)
+produtos.append(p2)
+produtos.append(p3)
+produtos.append(p4)
+produtos.append(p5)
 
 func MenuInicial (){
     print("Lojas Brasileiras")
@@ -77,7 +89,7 @@ func MenuUsuario () {
     if let resposta = readLine(){
         switch resposta {
         case "1":
-            //chamada da funcao Lista de Produtos
+            ListaProdutos()
             break;
         case "2":
             //chamada da funcao Cadastra de Produtos para Venda
@@ -88,6 +100,49 @@ func MenuUsuario () {
         }
     }
     
+}
+
+func ListaProdutos(){
+    var existe: Bool = false
+    print("---------------- Lista de Produtos ----------------")
+    for produto in produtos {
+        print("Codigo: \(produto.codigo) \t Nome: \(produto.nome) \t Valor: \(produto.valor) \t Data: \(produto.data_publicacao) \n Descrição: \(produto.descricao)")
+    }
+    print("O que você deseja fazer?")
+    print("1 - Adicionar Produto ao carrinho")
+    print("2 - Voltar ao Menu")
+    if let read = readLine() {
+        switch read {
+        case "1":
+            print("Qual o código do produto?")
+            if let read = readLine() {
+                if let int = Int(read) {
+                    for produto in produtos{
+                        if produto.codigo == int {
+                            InsereCarrinho()
+                            existe = true
+                        }
+                    }
+                    if existe {
+                        print("Produto inserido no carrinho.")
+                        ListaProdutos()
+                    } else {
+                        print("Produto não encontrado.")
+                        ListaProdutos()
+                    }
+                }
+            }
+        case "2":
+            MenuUsuario()
+            
+        default:
+            break;
+        }
+    }
+}
+
+func InsereCarrinho(){
+    print("algo foi feito")
 }
 
 func CadastraProduto(){
