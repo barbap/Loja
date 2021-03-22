@@ -89,6 +89,7 @@ func MenuUsuario () {
     print("Lojas Brasileiras")
     print("1 - Lista de Produtos")
     print("2 - Cadastrar Produto para Venda")
+    print("3 - Sair")
     if let resposta = readLine(){
         switch resposta {
         case "1":
@@ -98,6 +99,11 @@ func MenuUsuario () {
             //chamada da funcao Cadastra de Produtos para Venda
             CadastraProduto()
             break;
+            
+        case "3":
+            MenuInicial()
+            break;
+            
         default:
             break;
         }
@@ -199,11 +205,11 @@ func GerarBoleto(valor_total: Double){
     print("Aqui está seu boleto para pagamento:\n")
     for _ in 1...14 {
         salva = Int.random(in: 1..<100)
-        
         boleto = boleto + String(salva)
-        
     }
     print("\(boleto)\n")
+    carrinho.removeAll()
+    MenuUsuario()
 }
 
 func CadastraProduto(){
