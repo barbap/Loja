@@ -29,7 +29,6 @@ usuarios.append(usuario2)
 usuarios.append(usuario3)
 
 
-
 class Produto {
     let codigo: Int
     let nome: String
@@ -45,6 +44,7 @@ class Produto {
         self.data_publicacao = data_publicacao
     }
 }
+
 var momento = Date()
 
 let p1 = Produto(codigo: 1, nome: "Cebola", descricao: "Comida", valor: 2.20, data_publicacao: momento)
@@ -54,6 +54,9 @@ let p4 = Produto(codigo: 4, nome: "Notebook", descricao: "Eletronico", valor: 80
 let p5 = Produto(codigo: 5, nome: "iPhone", descricao: "Telefone", valor: 7000.50, data_publicacao: momento)
 
 var produtos = [Produto]()
+
+var carrinho = [Produto]()
+
 
 produtos.append(p1)
 produtos.append(p2)
@@ -110,7 +113,10 @@ func ListaProdutos(){
     }
     print("O que você deseja fazer?")
     print("1 - Adicionar Produto ao carrinho")
-    print("2 - Voltar ao Menu")
+    print("2 - Remover Produto do carrinho")
+    print("3 - Carrinho")
+    print("4 - Voltar ao Menu")
+    
     if let read = readLine() {
         switch read {
         case "1":
@@ -119,7 +125,7 @@ func ListaProdutos(){
                 if let int = Int(read) {
                     for produto in produtos{
                         if produto.codigo == int {
-                            InsereCarrinho()
+                            carrinho.append(produto)
                             existe = true
                         }
                     }
@@ -133,6 +139,32 @@ func ListaProdutos(){
                 }
             }
         case "2":
+            print("Qual o código do produto?")
+            if let read = readLine() {
+                if let int = Int(read) {
+                    if let index = carrinho.firstIndex(where: {$0.codigo == int}) // Search id = 1 you can set any value
+                    {
+                        if carrinho.count >= index {
+                            print("Removendo produto \(carrinho[index].nome)")
+                            carrinho.remove(at: index)
+                        }
+                        else {
+                            print("Ocorreu um erro.")
+                        }
+                    }
+                }
+            }
+            ListaProdutos()
+            
+        case "3":
+            print("Seu carrinho: \n")
+            print("---------------- Carrinho ----------------")
+            for produto in carrinho {
+                print("Codigo: \(produto.codigo) \t Nome: \(produto.nome) \t Valor: \(produto.valor) \t Data: \(produto.data_publicacao) \n Descrição: \(produto.descricao)")
+            }
+            ListaProdutos()
+            
+        case "4":
             MenuUsuario()
             
         default:
@@ -142,7 +174,7 @@ func ListaProdutos(){
 }
 
 func InsereCarrinho(){
-    print("algo foi feito")
+
 }
 
 func CadastraProduto(){
@@ -159,6 +191,7 @@ func CadastraProduto(){
     print("Descricao")
     if let descricaoRead: String = readLine(){descricao = descricaoRead}
     print("Valor")
+    
     if let valorRead = readLine(){
         if let doubleValor = Double(valorRead){
         valor = doubleValor
