@@ -105,6 +105,10 @@ func MenuUsuario () {
     
 }
 
+func GerarBoleto () {
+    print("Boleto")
+}
+
 func ListaProdutos(){
     var existe: Bool = false
     print("---------------- Lista de Produtos ----------------")
@@ -162,7 +166,19 @@ func ListaProdutos(){
             for produto in carrinho {
                 print("Codigo: \(produto.codigo) \t Nome: \(produto.nome) \t Valor: \(produto.valor) \t Data: \(produto.data_publicacao) \n Descrição: \(produto.descricao)")
             }
-            ListaProdutos()
+            print ("1 - Finalizar compra")
+            print ("2 - Continuar comprando")
+            if let opcao = readLine() {
+                switch opcao {
+                case "1":
+                    GerarBoleto()
+                case "2":
+                    ListaProdutos()
+                default:
+                    ListaProdutos()
+                }
+            }
+            
             
         case "4":
             MenuUsuario()
