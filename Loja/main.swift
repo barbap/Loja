@@ -174,7 +174,7 @@ func ListaProdutos(){
             if let opcao = readLine() {
                 switch opcao {
                 case "1":
-                    GerarBoleto()
+                    GerarBoleto(valor_total: valor_total)
                 case "2":
                     ListaProdutos()
                 default:
@@ -194,6 +194,10 @@ func ListaProdutos(){
 
 func InsereCarrinho(){
 
+}
+
+func GerarBoleto(valor_total: Double){
+    print("Teste valor total abraço \(valor_total)")
 }
 
 func CadastraProduto(){
