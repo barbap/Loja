@@ -105,10 +105,6 @@ func MenuUsuario () {
     
 }
 
-func GerarBoleto () {
-    print("Boleto")
-}
-
 func ListaProdutos(){
     var existe: Bool = false
     print("---------------- Lista de Produtos ----------------")
@@ -197,7 +193,17 @@ func InsereCarrinho(){
 }
 
 func GerarBoleto(valor_total: Double){
-    print("Teste valor total abraço \(valor_total)")
+    var salva: Int = 0
+    var boleto: String = ""
+    print("O valor final de sua compra é: \(valor_total)\n")
+    print("Aqui está seu boleto para pagamento:\n")
+    for _ in 1...14 {
+        salva = Int.random(in: 1..<100)
+        
+        boleto = boleto + String(salva)
+        
+    }
+    print("\(boleto)\n")
 }
 
 func CadastraProduto(){
