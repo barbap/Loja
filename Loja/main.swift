@@ -161,11 +161,14 @@ func ListaProdutos(){
             ListaProdutos()
             
         case "3":
+            var valor_total: Double = 0;
             print("Seu carrinho: \n")
             print("---------------- Carrinho ----------------")
             for produto in carrinho {
                 print("Codigo: \(produto.codigo) \t Nome: \(produto.nome) \t Valor: \(produto.valor) \t Data: \(produto.data_publicacao) \n Descrição: \(produto.descricao)")
+                valor_total += produto.valor
             }
+            print("Valor total dos produtos: \(valor_total) \n")
             print ("1 - Finalizar compra")
             print ("2 - Continuar comprando")
             if let opcao = readLine() {
